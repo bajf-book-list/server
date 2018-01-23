@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/api/v1/books', function(request, response) {
-  client.query('SELECT * FROM persons;')
+  client.query('SELECT * FROM books;')
   .then(function(data) {
     response.send(data);
   })
