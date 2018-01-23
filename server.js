@@ -15,7 +15,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/db/person', function(request, response) {
+app.get('/api/v1/books', function(request, response) {
   client.query('SELECT * FROM persons;')
   .then(function(data) {
     response.send(data);
@@ -25,7 +25,7 @@ app.get('/db/person', function(request, response) {
   });
 });
 
-app.post('/db/person', function(request, response) {
+app.post('/api/v1/books', function(request, response) {
   client.query(`
     INSERT INTO persons(name, age, ninja)
     VALUES($1, $2, $3);
