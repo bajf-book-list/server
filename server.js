@@ -60,7 +60,7 @@ function createTable() {
       title VARCHAR(256),
       author VARCHAR(256),
       image_url VARCHAR(256),
-      isbn VARCHAR(17),
+      isbn VARCHAR(30),
       description VARCHAR(256)
     );`
   )
