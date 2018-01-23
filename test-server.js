@@ -21,7 +21,7 @@ app.get('/', function(request, response) {
 });
 
 app.get('/api/v1/books', function(request, response) {
-  client.query('SELECT * FROM persons;')
+  client.query('SELECT * FROM books;')
   .then(function(data) {
     response.send(data);
   })
