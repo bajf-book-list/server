@@ -27,13 +27,16 @@ app.get('/api/v1/books', function(request, response) {
 
 app.post('/api/v1/books', function(request, response) {
   client.query(`
-    INSERT INTO persons(name, age, ninja)
-    VALUES($1, $2, $3);
+    INSERT INTO books(title, author, image_url, isbn, description)
+    VALUES($1, $2, $3, $4, $5);
     `,
     [
-      request.body.name,
-      request.body.age,
-      request.body.ninja
+      request.body.title,
+      request.body.author,
+      request.body.image_url,
+      request.body.isbn,
+      request.body.description,
+
     ]
   )
   .then(function(data) {
@@ -52,11 +55,13 @@ app.listen(PORT, () => {
 
 function createTable() {
   client.query(`
-    CREATE TABLE IF NOT EXISTS persons(
-      id SERIAL PRIMARY KEY,
-      name VARCHAR(256),
-      age INTEGER,
-      ninja BOOLEAN
+    CREATE TABLE IF NOT EXISTS books(
+      book_id SERIAL PRIMARY KEY,
+      title VARCHAR(256),
+      author VARCHAR(256),
+      image_url VARCHAR(256),
+      isbn VARCHAR(17),
+      description VARCHAR(256)
     );`
   )
   .then(function(response) {
