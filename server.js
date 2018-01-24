@@ -61,7 +61,7 @@ function createTable() {
       author VARCHAR(256),
       image_url VARCHAR(256),
       isbn VARCHAR(30),
-      description VARCHAR(256)
+      description TEXT NOT NULL
     );`
   )
   .then(function(response) {
