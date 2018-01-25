@@ -30,6 +30,17 @@ app.get('/api/v1/books', function(request, response) {
   });
 });
 
+app.get('/api/v1/books/:id', function(request, response) {
+  client.query('SELECT * FROM books WHERE book_id =$1', [request.params.id])
+  .then(function(data) {
+    response.send(data.rows);
+    console.log('selected book', data.rows);
+  })
+  .catch(function(err) {
+    console.error(err);
+  });
+});
+
 app.post('/api/v1/books', function(request, response) {
   client.query(`
     INSERT INTO books(title, author, image_url, isbn, description)
@@ -66,7 +77,7 @@ function createTable() {
       author VARCHAR(256),
       image_url VARCHAR(256),
       isbn VARCHAR(17),
-      description VARCHAR(256)
+      description TEXT NOT NULL
     );`
   )
   .then(function(response) {
