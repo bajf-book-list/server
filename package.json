@@ -2,10 +2,10 @@
   "name": "sample-app",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "test-server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "server.js"
+    "start": "test-server.js"
   },
   "keywords": [],
   "author": "",
